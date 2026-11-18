@@ -245,6 +245,13 @@
   .item .more:hover { text-decoration-color:var(--espresso); }
   .kicker .dot { color:var(--toffee); margin:0 .7em; }
   @media (max-width: 520px) { .kicker { font-size:.7rem; letter-spacing:.11em; } .kicker .dot { margin:0 .5em; } }
+  /* Cover grid, Instagram-style (16 Nov 2026): 3 per row, each tile is the carousel cover, links to the article */
+  .grid { max-width:880px; margin:clamp(28px, 5vw, 48px) auto 0; padding:0 var(--gutter); display:grid; grid-template-columns:repeat(3, minmax(0, 200px)); gap:3px; }
+  .tile { display:block; text-decoration:none; color:inherit; }
+  .tile img { width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; display:block; transition:opacity .2s; }
+  .tile:hover img, .tile:focus-visible img { opacity:.85; }
+  .tile:focus-visible { outline:2px solid var(--toffee); outline-offset:2px; }
+  .sr-only { position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 </style>
 </head>
 <body>
@@ -276,14 +283,15 @@
     <p class="intro">Short reads on what the research actually says.</p>
   </header>
 
-  <section class="items" aria-label="All articles">
-    <article class="item">
-      <p class="kicker">Protein<span class="dot">·</span>16 November 2026<span class="dot">·</span>4 min read</p>
-      <hr class="rule">
-      <h2><a href="/articles/protein/">Are You Obsessed With 30g of Protein?</a></h2>
-      <p class="dek-l">Your required intake might just be different. Here’s how to calculate your daily protein requirements.</p>
-      <a class="more" href="/articles/protein/">Read the article &rarr;</a>
-    </article>
+  <section class="grid" aria-label="All articles">
+    <a class="tile" href="/articles/fibre/">
+      <img src="/images/covers/fibre.jpg" width="512" height="640" alt="Fibre: Beautiful poops are just the start." loading="lazy">
+      <span class="sr-only">Fibre, 18 Nov 2026: Fibre: It does more than produce beautiful poops</span>
+    </a>
+    <a class="tile" href="/articles/protein/">
+      <img src="/images/covers/protein.jpg" width="512" height="640" alt="Protein: 30g of protein per meal. Says who?" loading="lazy">
+      <span class="sr-only">Protein, 16 Nov 2026: Are You Obsessed With 30g of Protein?</span>
+    </a>
   </section>
 </main>
 
